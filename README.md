@@ -16,3 +16,8 @@ https://massive.io/send-large-files/
 
 大文件传输速度网速可以的话基本都在1Mbps以上，可以直接google账号免注册登录，每个账号提供20G的免费空间。文件传完后，可以在Cloud Intergration菜单下面加载google drive,把上传的文件transfer过去就可以，速度非常快。
 ![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230710230548.png)
+
+# google colab安装comfyUI和sdxl 0.9版本的base model,refiner model
+你可以在google colab上运行此python脚本(解压comfyUI后把sd_xl_base_0.9.safetensors和sd_xl_refiner_0.9.safetensors放在ComfyUI\models\checkpoints),访问此链接并填写IP地址后出现comfyUI运行页面代表启动成功。
+
+下载此[workflow的json文件](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/Workflow%20ComfyUI%20SDXL%200.9.json)并把他Load加载到comfyUI里，即可以开始你的comfyUI作图之旅了。
