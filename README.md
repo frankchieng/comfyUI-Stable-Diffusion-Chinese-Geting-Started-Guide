@@ -10,7 +10,7 @@ https://drive.google.com/drive/folders/1JVNLya7JsiUqR7l8I6avk1pmkEXFm32O
 
 https://mega.nz/folder/QSVFiBrS#Nq2BWbG-0bsdWoyd3AhdZw
 
-因为不是local跑模型，国内的比如autoDL的GPU3060RTX，4080RTX等都是按小时，天或者月收费，因此选择了目前性价比最高的google colab来跑comfyUI,colab提供了一定额度和时间的免费NVIDIA tesla T4 GPU，为了便于每次访问不需要再重新上传一遍文件，需要配合把上面提高的安装包上传到google driver也就是谷歌云盘上，这样每次colab运行的时候只需要mount加载google driver的文件内容即可，不过这么大的文件上传到google drive速度是很慢的，而国内一般普通会员的云盘上传最多只提供5G的免费容量，为了增加文件上传大小和速度，选择了MASV - Fast, Large File Transfer Service，链接如下：
+因为不是local跑模型，国内的比如autoDL的GPU3060RTX，4080RTX等都是按小时，天或者月收费，因此选择了目前性价比最高的google colab来跑comfyUI,colab提供了一定额度和时间的免费NVIDIA tesla T4 GPU，为了便于每次访问不需要再重新上传一遍文件，需要配合把上面提到的安装包上传到google driver也就是谷歌云盘上，这样每次colab运行的时候只需要mount加载google driver的文件内容即可，不过这么大的文件上传到google drive速度是很慢的，而国内一般普通会员的云盘上传最多只提供5G的免费容量，为了增加文件上传大小和速度，选择了MASV - Fast, Large File Transfer Service，链接如下：
 
 https://massive.io/send-large-files/ 
 
@@ -18,6 +18,30 @@ https://massive.io/send-large-files/
 ![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230710230548.png)
 
 # google colab安装comfyUI和sdxl 0.9版本的base model,refiner model
-你可以在google colab上运行此python脚本(解压comfyUI后把sd_xl_base_0.9.safetensors和sd_xl_refiner_0.9.safetensors放在ComfyUI\models\checkpoints),访问此链接并填写IP地址后出现comfyUI运行页面代表启动成功。
+你可以在google colab上运行此[python脚本](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/comfyui_colab.ipynb)(解压comfyUI后把sd_xl_base_0.9.safetensors和sd_xl_refiner_0.9.safetensors放在ComfyUI\models\checkpoints),访问如下图的链接并填写IP地址后出现comfyUI运行页面代表启动成功。
 
-下载此[workflow的json文件](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/Workflow%20ComfyUI%20SDXL%200.9.json)并把他Load加载到comfyUI里，即可以开始你的comfyUI作图之旅了。
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230711011657.png)
+
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230711011739.png)
+
+finally，我们终于成功运行起了comfyUI的用户界面
+
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230711013035.png)
+
+下载此[workflow的json文件](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/Workflow%20ComfyUI%20SDXL%200.9.json)并把他Load加载到comfyUI里，即可以开始你的sdxl模型的comfyUI作图之旅了。
+
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230711013918.png)
+
+如下图refiner model生成的图片质量和细节捕捉要好过base model生成的图片，没有对比就没有伤害！
+
+base model image:
+
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/base_output_00003_.png)
+
+refiner model image:
+
+![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/refiner_output_00001_.png)
+
+
+中文版内容资料陆续更新中，包括nodes各个节点和参数的应用以及说明(包括controlnet插件，LoRA'S，upscaling,inpaint and outpaint等等)，敬请期待
+
