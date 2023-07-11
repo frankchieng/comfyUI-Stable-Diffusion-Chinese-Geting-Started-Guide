@@ -8,8 +8,6 @@ comfyUI采用的是workflow体系来运行Stable Diffusion的各种模型和参�
 
 [点此下载](https://github.com/comfyanonymous/ComfyUI/releases/download/latest/ComfyUI_windows_portable_nvidia_cu118_or_cpu.7z)支持Nvidia GPU版本comfyUI压缩包：
 
-
-
 下面的链接是sdxl的pruned版的下载，总共差不多12.12GB 
 
 https://drive.google.com/drive/folders/1JVNLya7JsiUqR7l8I6avk1pmkEXFm32O
@@ -51,6 +49,8 @@ refiner model image:
 如果你升级google colab为Pro或者Pro+会员，GPU可以选择更强大的Nvidia的A100和V100 GPU，1块A100的训练速度是1一块V100的3.4倍； 使用混合精度时，前者则是后者的2.6倍。 其中，分别用8块A100与8块V100，进行32位训练：前者速度能够达到后者的3.5倍。一个月可以有100个计算单元computer units可用。[点击此处](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/Making_the_Most_of_your_Colab_Subscription.ipynb)查看GPU运行时信息以及是否使用了high-RAM，以便切换更高的运行时内存。
 
 中文版内容资料陆续更新中，包括nodes各个节点和参数的应用以及说明(包括controlnet插件，LoRA'S，upscaling,inpaint and outpaint等等)，敬请期待
+
+[ComfyUI使用的案例](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/ComfyUI_examples/README.md)
 
 交流进微信群可以扫码添加此微信：
 
