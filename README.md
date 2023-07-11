@@ -51,3 +51,7 @@ refiner model image:
 
 中文版内容资料陆续更新中，包括nodes各个节点和参数的应用以及说明(包括controlnet插件，LoRA'S，upscaling,inpaint and outpaint等等)，敬请期待
 
+交流进微信群可以扫码添加此微信：
+
+![image](https://github.com/frankchieng/imagegeneration/blob/main/wechat.jpg)
+
