@@ -48,6 +48,7 @@ refiner model image:
 
 ![image](https://github.com/frankchieng/comfyUI-SDXL-Chinese-Geting-Started-Guide/blob/main/assets/refiner_output_00001_.png)
 
+如果你升级google colab为Pro或者Pro+会员，GPU可以选择更强大的Nvidia的A100和V100 GPU，1块A100的训练速度是1一块V100的3.4倍； 使用混合精度时，前者则是后者的2.6倍。 其中，分别用8块A100与8块V100，进行32位训练：前者速度能够达到后者的3.5倍。一个月可以有100个计算单元computer units可用。[点击此处](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/Making_the_Most_of_your_Colab_Subscription.ipynb)查看GPU运行时信息以及是否使用了high-RAM，以便切换更高的运行时内存。
 
 中文版内容资料陆续更新中，包括nodes各个节点和参数的应用以及说明(包括controlnet插件，LoRA'S，upscaling,inpaint and outpaint等等)，敬请期待
 
