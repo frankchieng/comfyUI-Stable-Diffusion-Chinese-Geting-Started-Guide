@@ -4,7 +4,13 @@
 # comfyUI和sdxl0.9模型下载和上传云空间
 comfyUI采用的是workflow体系来运行Stable Diffusion的各种模型和参数，有点类似于桌面软件widgets,各个控制流节点可以拖拽，复制，resize改变大小等，更方便对最终output输出图片的细节调优。
 
-最新的sdxl破解版model分别为sd_xl_base_0.9.safetensors和sd_xl_refiner_0.9.safetensors，普通无压缩下载12.9GB和5.65GB，太大了，再加上comfyUI的下载版ComfyUI_windows_portable_nvidia_cu118_or_cpu.7z也有差不多1.43GB，下面的链接有pruned版的下载，总共差不多12.12GB 
+最新的sdxl破解版model分别为sd_xl_base_0.9.safetensors和sd_xl_refiner_0.9.safetensors，普通无压缩下载12.9GB和5.65GB，太大了，再加上comfyUI的下载版ComfyUI_windows_portable_nvidia_cu118_or_cpu.7z也有差不多1.43GB，
+
+[点此下载](https://github.com/comfyanonymous/ComfyUI/releases/download/latest/ComfyUI_windows_portable_nvidia_cu118_or_cpu.7z)支持Nvidia GPU版本comfyUI压缩包：
+
+
+
+下面的链接是sdxl的pruned版的下载，总共差不多12.12GB 
 
 https://drive.google.com/drive/folders/1JVNLya7JsiUqR7l8I6avk1pmkEXFm32O
 
