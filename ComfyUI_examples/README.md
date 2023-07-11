@@ -7,5 +7,14 @@
 
 [4x Ultrasharp Upscaler](https://mega.nz/folder/qZRBmaIY#nIG8KyWFcGNTuMX_XNbJ_g)
 
+[workflow的加载json文件](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/ComfyUI_examples/assets/upscale_model.json)
+
+refined model出图：
+
+![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/ComfyUI_examples/assets/SDXL_0.9_Output_00001_.png)
+
+4x Ultrasharp Upscaler出图，明显能看到分辨率更高，而且人的皮肤等细节处理的更光滑，更清晰：
+![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/ComfyUI_examples/assets/UpScaled_Upscaled_SDXL09__00002_.png)
+
 
 
