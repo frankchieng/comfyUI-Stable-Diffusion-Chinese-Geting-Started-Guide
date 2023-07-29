@@ -1,6 +1,13 @@
 # google cloud云端0成本部署comfyUI体验SDXL模型
 你还需要花钱购买midjourney会员来享用AI作图工具吗，答案肯定是否定的，看完后你就知道怎么实现了，如果觉得满意的话请给个star哦。
 
+# comfyUI和sdxl1.0 colab运行
+SDXL1.0正式版上线后，不需要再下载base model和refine model的模型，直接挂载huggingface上面的safetensor文件到comfyUI目录下面的/models/checkpoints/路径即可：
+!wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -P ./models/checkpoints/
+!wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors -P ./models/checkpoints/
+VAE同样：
+!wget -c https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors -P ./models/vae/
+
 # comfyUI和sdxl0.9模型下载和上传云空间
 comfyUI采用的是workflow体系来运行Stable Diffusion的各种模型和参数，有点类似于桌面软件widgets,各个控制流节点可以拖拽，复制，resize改变大小等，更方便对最终output输出图片的细节调优。
 
@@ -49,6 +56,29 @@ refiner model image:
 如果你升级google colab为Pro或者Pro+会员，GPU可以选择更强大的Nvidia的A100和V100 GPU，1块A100的训练速度是1一块V100的3.4倍； 使用混合精度时，前者则是后者的2.6倍。 其中，分别用8块A100与8块V100，进行32位训练：前者速度能够达到后者的3.5倍。一个月可以有100个计算单元computer units可用。[点击此处](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/Making_the_Most_of_your_Colab_Subscription.ipynb)查看GPU运行时信息以及是否使用了high-RAM，以便切换更高的运行时内存。
 
 中文版内容资料陆续更新中，包括nodes各个节点和参数的应用以及说明(包括controlnet插件，LoRA'S，upscaling,inpaint and outpaint等等)，敬请期待
+
+除了用comfyUI的workflow添加nodes节点形式来运行SDXL1.0模型之外，如果需要训练LoRA,controlnet等，建议使用diffusers pipeline，能调整更多的参数
+LoRA和controlnet对于GPU配置要求比较高，建议40G VRAM的A100 GPU来训练，比较耗显存
+
+什么是pipeline?
+pipeline管道是一个端到端的类能够提供快速和简便的方法来使用diffusion系统，为了能够独立的捆绑训练好的模型和scheduler调度器来进行推理.一些特定的模型和调度器的组合定义了特殊的pipeline管道类型，比如StableDiffusionPipeline或StableDiffusionControlNetPipeline。所有的pipeline类型继承自基础DiffusionPipeline类。传递任意的checkpoint，它会自动的检测pipeline管道类型并且加载必须的组件。
+
+目前的SDXL1.0模型pipeline主要有三个，第一个是Text-to-Image的StableDiffusionXLPipeline，调用stable-diffusion-xl-base-1.0的base模型。第二个是
+Image-to-image的StableDiffusionXLImg2ImgPipeline，调用stable-diffusion-xl-refiner-1.0的refiner模型。第三个是Inpainting的StableDiffusionXLInpaintPipeline。
+
+SDXL有一个特别有意思的地方：能够传递多个不同的prompts至每个text-encoder,也就是组合prompts能生成非常有想象力的图片。
+Stable Diffusion XL 是在两个text encoders文本编码器上面做的训练。默认的行为是传递同样的prompt到每一个text encoders里。但也能够传递不同的prompt到每一个text-encoder,一些用户发现这样做能够提高图片质量。为了实现这个效果, 除了prompt和negative_prompt之外你还能够传递prompt_2和negative_prompt_2 。原始的prompt和negative prompt传递至text_encoder (官方 SDXL 0.9/1.0用的文本编码器是OpenAI CLIP-ViT/L-14), 而prompt_2和negative_prompt_2传递至text_encoder_2 (官方SDXL 0.9/1.0的文本编码器是OpenCLIP-ViT/bigG-14).
+比如下面的prompt提示词分别为
+prompt = "award winning photograph of elephant"
+prompt_2 = "award winning photograph of octopus"
+组合后能生成出来既像大象又像章鱼的奇怪生物
+另外由于sdxl1.0生成图片非常消耗GPU的显存，每次生成图片之前最好加上pipe.vae.enable_tiling()和pipe.enable_model_cpu_offload()以便于避免出现cuda out of memory显存不够用而导致运行崩溃的错误
+
+![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/assets/diffusers.png)
+
+![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/assets/elephant_octopus1.png)
+
+点击获取[comfyUI和diffusers的colab部署代码](https://colab.research.google.com/drive/1yO30qPLybCj8OatCUxloC6G5j9VrXdFF?usp=sharing)
 
 [ComfyUI使用的案例](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/ComfyUI_examples/README.md)
 
