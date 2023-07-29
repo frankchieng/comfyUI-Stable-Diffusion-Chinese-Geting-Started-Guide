@@ -3,10 +3,17 @@
 
 # comfyUI和sdxl1.0 colab运行
 SDXL1.0正式版上线后，不需要再下载base model和refine model的模型，直接挂载huggingface上面的safetensor文件到comfyUI目录下面的/models/checkpoints/路径即可：
+
+```
 !wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors -P ./models/checkpoints/
+```
+```
 !wget -c https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors -P ./models/checkpoints/
+```
 VAE同样：
+```
 !wget -c https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors -P ./models/vae/
+```
 
 # comfyUI和sdxl0.9模型下载和上传云空间
 comfyUI采用的是workflow体系来运行Stable Diffusion的各种模型和参数，有点类似于桌面软件widgets,各个控制流节点可以拖拽，复制，resize改变大小等，更方便对最终output输出图片的细节调优。
@@ -67,11 +74,17 @@ pipeline管道是一个端到端的类能够提供快速和简便的方法来使
 Image-to-image的StableDiffusionXLImg2ImgPipeline，调用stable-diffusion-xl-refiner-1.0的refiner模型。第三个是Inpainting的StableDiffusionXLInpaintPipeline。
 
 SDXL有一个特别有意思的地方：能够传递多个不同的prompts至每个text-encoder,也就是组合prompts能生成非常有想象力的图片。
-Stable Diffusion XL 是在两个text encoders文本编码器上面做的训练。默认的行为是传递同样的prompt到每一个text encoders里。但也能够传递不同的prompt到每一个text-encoder,一些用户发现这样做能够提高图片质量。为了实现这个效果, 除了prompt和negative_prompt之外你还能够传递prompt_2和negative_prompt_2 。原始的prompt和negative prompt传递至text_encoder (官方 SDXL 0.9/1.0用的文本编码器是OpenAI CLIP-ViT/L-14), 而prompt_2和negative_prompt_2传递至text_encoder_2 (官方SDXL 0.9/1.0的文本编码器是OpenCLIP-ViT/bigG-14).
+
+Stable Diffusion XL 是在两个text encoders文本编码器上面做的训练。默认的行为是传递同样的prompt到每一个text encoders里。但也能够传递不同的prompt到每一个text-encoder,一些用户发现这样做能够提高图片质量。为了实现这个效果, 除了prompt和negative_prompt之外你还能够传递prompt_2和negative_prompt_2 。原始的prompt和negative prompt传递至text_encoder (官方 SDXL 0.9/1.0用的文本编码器是OpenAI CLIP-ViT/L-14), 而prompt_2和negative_prompt_2传递至text_encoder_2 (官方SDXL 0.9/1.0的文本编码器是OpenCLIP-ViT/bigG-14)。
+
 比如下面的prompt提示词分别为
+
 prompt = "award winning photograph of elephant"
+
 prompt_2 = "award winning photograph of octopus"
+
 组合后能生成出来既像大象又像章鱼的奇怪生物
+
 另外由于sdxl1.0生成图片非常消耗GPU的显存，每次生成图片之前最好加上pipe.vae.enable_tiling()和pipe.enable_model_cpu_offload()以便于避免出现cuda out of memory显存不够用而导致运行崩溃的错误
 
 ![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/assets/diffusers.png)
