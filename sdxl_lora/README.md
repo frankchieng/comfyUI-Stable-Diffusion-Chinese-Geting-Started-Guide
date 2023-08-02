@@ -18,7 +18,7 @@
 重点参数配置说明:
 神经网络采用LoRA-C3Lier，除了Linear Layer线性层network_dim训练外，还可以用Convolutional Layer卷积层的conv_dim来训练，convolutional kernel应该是3x3
 optimizer_type优化器选择了Adafactor，之前无论用diffusers跑的时候选择的AdamW 8bit在torch2.x以及xformer2.0.0依赖下面，经常会出现CUDA out of memory的报错，
-GPU的RAM要求比较高，learning_rate学习率设置为1e-5，为了节省显存，num_repeats设为1，epochs设为10，每跑一次epoch,出来一个lora的safetensors节点和一张该节点的
+对于GPU的RAM要求比较高，这里我们优化选择了scaled dot-product attention，即缩放的点积(矩阵乘法)注意力机制来替代xformers方案，learning_rate学习率设置为1e-5，为了节省显存，num_repeats设为1，epochs设为10，每跑一次epoch,出来一个lora的safetensors节点和一张该节点的
 训练后式例图片，mixed_precision混合精读设为fp16,sample采样器选择euler_a
 
 所有参数配置文件在sdxl_lora/config_file.toml和sdxl_lora/sample_prompt.toml，可以下载后自行参考修改
