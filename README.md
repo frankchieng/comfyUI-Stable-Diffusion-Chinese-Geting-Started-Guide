@@ -67,7 +67,7 @@ refiner model image:
 除了用comfyUI的workflow添加nodes节点形式来运行SDXL1.0模型之外，如果需要训练LoRA,controlnet等，建议使用diffusers pipeline，能调整更多的参数
 LoRA和controlnet对于GPU配置要求比较高，建议40G VRAM的A100 GPU来训练，比较耗显存
 
-[SDXL1.0 LoRA训练文档](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/README.md)，只需要GPU 16GB RAM即可实现
+[SDXL1.0 LoRA训练文档](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/tree/main/sdxl_lora)，只需要GPU 16GB RAM即可实现
 
 什么是pipeline?
 pipeline管道是一个端到端的类能够提供快速和简便的方法来使用diffusion系统，为了能够独立的捆绑训练好的模型和scheduler调度器来进行推理.一些特定的模型和调度器的组合定义了特殊的pipeline管道类型，比如StableDiffusionPipeline或StableDiffusionControlNetPipeline。所有的pipeline类型继承自基础DiffusionPipeline类。传递任意的checkpoint，它会自动的检测pipeline管道类型并且加载必须的组件。
