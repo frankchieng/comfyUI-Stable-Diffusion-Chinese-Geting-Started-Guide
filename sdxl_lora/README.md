@@ -30,3 +30,7 @@ LoRA训练10次epochs的safetensors已经训练结束后最终的模型在[huggi
 最后inference推理通过prompt: 1girl, aqua eyes, baseball cap, blonde hair, closed mouth, earrings, green background, hat, hoop earrings, jewelry, looking at viewer, shirt, short hair, simple background, solo, upper body, yellow shirt
 生成的训练后图片
 ![image](https://github.com/frankchieng/comfyUI-Stable-Diffusion-Chinese-Geting-Started-Guide/blob/main/assets/sdxl_lora_20230801152910_e000003_00.png)
+
+因为sdxl1.0的模型对于生成真人的相似度不够，所以也可以考虑用LoRA来训练character，这里以女演员Michelle Yeoh举例，pre-trained总共有37张图片，
+最终生成的LoRA模型效果请参考[Michelle Yeoh](https://civitai.com/models/122435/michelle-yeoh-actress),总训练步数3700次，8次epochs，在comfyUI里用sdxl1.0 refiner模型和4X UltraSharp upscaling来提升细节捕捉
+
