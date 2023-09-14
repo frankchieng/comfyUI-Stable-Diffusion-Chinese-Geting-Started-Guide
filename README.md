@@ -28,6 +28,8 @@ https://drive.google.com/drive/folders/1JVNLya7JsiUqR7l8I6avk1pmkEXFm32O
 
 https://mega.nz/folder/QSVFiBrS#Nq2BWbG-0bsdWoyd3AhdZw
 
+目前最快的上传和下载model的方式是通过python的aria2c库在google colab里面跑subprocess，经过测试几个G的cpkt或safetensor文件下载几秒，上传几十秒基本就能搞定，直接用wget命令获取huggingface里的model传输到google drive也是比较快的，下面的方式只适合新手
+
 因为不是local跑模型，国内的比如autoDL的GPU3060RTX，4080RTX等都是按小时，天或者月收费，因此选择了目前性价比最高的google colab来跑comfyUI,colab提供了一定额度和时间的免费NVIDIA tesla T4 GPU，为了便于每次访问不需要再重新上传一遍文件，需要配合把上面提到的安装包上传到google driver也就是谷歌云盘上，这样每次colab运行的时候只需要mount加载google driver的文件内容即可，不过这么大的文件上传到google drive速度是很慢的，而国内一般普通会员的云盘上传最多只提供5G的免费容量，为了增加文件上传大小和速度，选择了MASV - Fast, Large File Transfer Service，链接如下：
 
 https://massive.io/send-large-files/ 
