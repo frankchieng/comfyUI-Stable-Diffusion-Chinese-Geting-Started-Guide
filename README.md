@@ -14,6 +14,10 @@ VAE同样：
 ```
 !wget -c https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors -P ./models/vae/
 ```
+下面的SDXL-VAE-FP16-Fix 能够解决某些时候fp16精度生成的图片产生NaNs的问题
+```
+!wget -c https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors -P ./models/vae/
+```
 
 # comfyUI和sdxl0.9模型下载和上传云空间
 comfyUI采用的是workflow体系来运行Stable Diffusion的各种模型和参数，有点类似于桌面软件widgets,各个控制流节点可以拖拽，复制，resize改变大小等，更方便对最终output输出图片的细节调优。
